@@ -38,6 +38,9 @@ input[type='file'] {
 
 header {
 	display: flex;
+	position: sticky;
+	top: 0;
+	z-index: 9999;
 	background-color: var(--color-accent-1);
 	color: var(--color-light);
 	padding: 1rem;
