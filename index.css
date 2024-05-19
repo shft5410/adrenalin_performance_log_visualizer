@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Full palette: https://coolors.co/palette/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff */
+:root {
+	--color-light: #f5f3f4;
+	--color-dark: #0b090a;
+	--color-accent-1: #161a1d;
+	--color-accent-2: #e5383b;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: var(--color-light);
+	color: var(--color-light);
+	background-color: var(--color-dark);
+}
+
+#file-input {
+}
