@@ -99,7 +99,7 @@ function createCharts({ headers, timestamps, dataseries }) {
 	// Create a chart for each header
 	headers.forEach((header, i) => {
 		const series = dataseries[i]
-		// Create chart container
+		// Create elements and add classes
 		const chartElement = document.createElement('div')
 		chartElement.classList.add('chart')
 		// Create plot using Plotly
@@ -123,6 +123,11 @@ function createCharts({ headers, timestamps, dataseries }) {
 		}
 		Plotly.newPlot(chartElement, [trace], layout, PLOT_CONFIG)
 		// Append elements to the container
+		if (i > 0) {
+			const separatorElement = document.createElement('hr')
+			separatorElement.classList.add('chart-separator')
+			chartContainerElement.appendChild(separatorElement)
+		}
 		chartContainerElement.appendChild(chartElement)
 	})
 }

@@ -29,6 +29,13 @@ input[type='file'] {
 	display: none;
 }
 
+.chart-separator {
+	height: 4px;
+	border: none;
+	background-color: var(--color-accent-1);
+	border-radius: 2px;
+}
+
 header {
 	display: flex;
 	background-color: var(--color-accent-1);
@@ -50,6 +57,7 @@ header {
 	background-color: var(--color-dark);
 	padding: 0.8rem;
 	border-radius: 0.4rem;
+	user-select: none;
 }
 .header__file-selector:hover {
 	background-color: var(--color-accent-2);
