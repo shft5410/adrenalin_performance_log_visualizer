@@ -9,8 +9,13 @@
 		<script defer src="index.js"></script>
 	</head>
 	<body>
-		<label for="file-input">Load CSV File</label>
-		<input type="file" id="file-input" accept=".csv" />
-		<div class="chart-container"></div>
+		<header>
+			<h1 class="header__title">Radeon Performance Logs</h1>
+			<label class="header__file-selector" for="header__file-input">Load CSV File</label>
+			<input type="file" id="header__file-input" accept=".csv" />
+		</header>
+		<main>
+			<div class="main__chart-container"></div>
+		</main>
 	</body>
 </html>

@@ -12,12 +12,50 @@
 	--color-accent-2: #e5383b;
 }
 
+::selection {
+	background-color: var(--color-accent-2);
+}
+
 body {
 	font-family: sans-serif;
 	background-color: var(--color-light);
 	color: var(--color-light);
 	background-color: var(--color-dark);
+	margin: 0;
+	padding: 0;
 }
 
-#file-input {
+input[type='file'] {
+	display: none;
+}
+
+header {
+	display: flex;
+	background-color: var(--color-accent-1);
+	color: var(--color-light);
+	padding: 1rem;
+	border-bottom: 2px solid var(--color-accent-2);
+	height: 4rem;
+	align-items: center;
+	gap: 2rem;
+}
+
+.header__title {
+	font-size: 1.8rem;
+	margin: 0;
+	padding: 0;
+}
+
+.header__file-selector {
+	background-color: var(--color-dark);
+	padding: 0.8rem;
+	border-radius: 0.4rem;
+}
+.header__file-selector:hover {
+	background-color: var(--color-accent-2);
+	cursor: pointer;
+}
+
+main {
+	margin: 8px;
 }
