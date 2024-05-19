@@ -43,7 +43,7 @@ header {
 .header__title {
 	font-size: 1.8rem;
 	margin: 0;
-	padding: 0;
+	margin-left: 0.8rem;
 }
 
 .header__file-selector {
@@ -58,4 +58,14 @@ header {
 
 main {
 	margin: 8px;
+}
+
+.main__message {
+	display: inline-block;
+	background-color: var(--color-accent-1);
+	font-size: 1.1rem;
+	margin: 0.7rem;
+	padding: 0.5rem;
+	padding-block: 0.3rem;
+	border-radius: 0.4rem;
 }
