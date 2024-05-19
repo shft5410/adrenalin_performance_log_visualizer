@@ -37,7 +37,7 @@ function getCSSVar(varName) {
 	return getComputedStyle(document.documentElement).getPropertyValue(varName)
 }
 
-// Read the file as text
+// Read a file as text
 function readFileAsText(file) {
 	return new Promise((resolve) => {
 		if (!file) resolve(null)
@@ -70,8 +70,10 @@ function parseCSVToTimeSeries(csv) {
 		const values = data.map((value) => Number(value))
 		const countNaN = values.filter((value) => isNaN(value)).length
 		if (countNaN === 0) {
+			// All values are numbers
 			dataseries[i] = { type: 'number', values }
 		} else if (countNaN === values.length) {
+			// All values aren't numbers
 			const strMap = [] // Mapping of nums (representing the index of a map element) to string values
 			const nums = data.map((value) => {
 				const i = strMap.indexOf(value) // Check if value already exists in map
@@ -84,6 +86,7 @@ function parseCSVToTimeSeries(csv) {
 				labels: strMap,
 			}
 		} else {
+			// Some values are numbers, some aren't
 			dataseries[i] = {
 				type: 'number',
 				values: values.map((value) => (isNaN(value) ? 0 : value)),
@@ -117,20 +120,24 @@ function createCharts({ headers, timestamps, dataseries }) {
 			title: header,
 			width: chartContainerElement.clientWidth,
 		}
+		// Set y-axis tickvals and ticktext if series is string so that the y-axis labels are strings
 		if (series.type === 'string') {
 			layout.yaxis.tickvals = series.labels.map((_, i) => i)
 			layout.yaxis.ticktext = series.labels
 		} else {
+			// Must be reset specifically to undefined, otherwise plots with numeric
+			// values won't be displayed properly after a plot with string values is created
 			layout.yaxis.tickvals = undefined
 			layout.yaxis.ticktext = undefined
 		}
 		Plotly.newPlot(chartElement, [trace], layout, PLOT_CONFIG)
-		// Append elements to the container
+		// Add separator if not the first chart
 		if (i > 0) {
 			const separatorElement = document.createElement('hr')
 			separatorElement.classList.add('chart-separator')
 			chartContainerElement.appendChild(separatorElement)
 		}
+		// Append chart to the container
 		chartContainerElement.appendChild(chartElement)
 	})
 }
@@ -141,6 +148,5 @@ fileInputElement.addEventListener('change', async (e) => {
 	if (!f) return
 	const csv = await readFileAsText(f)
 	const timeseries = parseCSVToTimeSeries(csv)
-	console.log(timeseries)
 	createCharts(timeseries)
 })
