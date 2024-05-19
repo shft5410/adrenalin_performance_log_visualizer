@@ -29,6 +29,7 @@ const PLOT_CONFIG = {
 	// Config options, refer to https://plotly.com/javascript/configuration-options/
 	displaylogo: false,
 	responsive: true,
+	showTips: false,
 }
 
 // Get value of CSS variable
@@ -107,8 +108,10 @@ function createCharts({ headers, timestamps, dataseries }) {
 			x: timestamps,
 			y: series.values,
 			type: 'scatter',
+			line: {
+				width: 2,
+			},
 		}
-
 		const layout = {
 			...BASE_PLOT_LAYOUT,
 			title: header,
